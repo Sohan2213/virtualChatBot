@@ -17,7 +17,11 @@ export default function  () {
       <div className='h-screen overflow-y-hidden'>
         <Title setMessages={setMessages}/>
         <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
-            Placeholder
+            {/* Recorder */}
+            <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-sky-500 to-violet-500 '>Hello</div>
+              <div className='flex justify-center items-center'>
+
+              </div>
         </div>
       </div>
     </div>
