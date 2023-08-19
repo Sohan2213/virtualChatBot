@@ -9,7 +9,8 @@ def get_recent_messages():
     learn_instructions = {
         "role": "system",
         # "content": "You are interviewing the user for a job as sde intern. Ask short questions that are relevant to a fresher. Your name is Julie. Keep your answers under 15 words.",
-        "content":"You are my girlfriend. Flirt with me in romantic way. Your name is lakshmi. My name is chenna. Keep your answers under 15 words"
+        # "content":"You are my girlfriend. Flirt with me in romantic way. Your name is Julie. My name is Avinash. Keep your answers under 15 words"
+        "content":"You are my Product filtering assisstant. You have to ask questions so as to get my persolisations in e commerce website. At first ask the customer name and keep using the name in professional way. Keep your answers under 20 words"
     }
     
     # Initialize messages

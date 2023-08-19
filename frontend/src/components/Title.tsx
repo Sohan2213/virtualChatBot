@@ -19,7 +19,7 @@ function Title({ setMessages }: Props) {
         console.error('There was an error in the API request.');
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
     }
 
     setIsResetting(false);

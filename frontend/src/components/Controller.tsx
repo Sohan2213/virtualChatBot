@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Title from './Title';
 import axios from 'axios';
 import RecordMessage from './recordMessage';
@@ -31,6 +31,7 @@ export default function App() {
       });
 
       const botBlob = apiResponse.data;
+      // console.log(botBlob);
       const botBlobUrl = createBlobUrl(botBlob);
 
       const botMsg = { sender: 'ai', blobUrl: botBlobUrl };
@@ -40,14 +41,14 @@ export default function App() {
       const audio = new Audio(botBlobUrl);
       audio.play();
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className='h-screen overflow-y-hidden bg-gradient-to-r from-purple-500 to-indigo-500'>
+    <div className='h-screen overflow-y-hidden bg-gradient-to-r from-blue-300 to-blue-100'>
       <Title setMessages={setMessages} />
       <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
         <div className='mt-5 px-5'>
@@ -62,12 +63,13 @@ export default function App() {
                 }`}
               >
                 <p className='mb-1'>{audio.sender === 'ai' ? 'AI' : 'Me'}</p>
+                
                 <audio src={audio.blobUrl} controls />
               </div>
             </div>
           ))}
         </div>
-        <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-sky-500 to-violet-500'>
+        <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-blue-600 to-blue-900'>
           <div className='flex justify-center items-center w-full'>
             <RecordMessage handleStop={handleStop} />
           </div>
