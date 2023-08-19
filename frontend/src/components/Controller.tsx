@@ -1,33 +1,78 @@
-import {useState} from 'react'
-import Title from "./title"
+import React, { useState } from 'react';
+import Title from './Title';
+import axios from 'axios';
 import RecordMessage from './recordMessage';
 
-export default function  () {
-    const [isLoading,setIsLoading] = useState(false); 
-    const[messages,setMessages] = useState<any[]>([]);
-    // const [blob,setBlob] = useState("");
-    const createBlobUrl = (data:any)=>{
-      
-    };
-    // when the user stops the recording
-    const handleStop = async (blobUrl:string) =>{
-      console.log(blobUrl);
-      // setBlob(blobUrl);
-    };
+export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState<any[]>([]);
+
+  const createBlobUrl = (data: any) => {
+    const blob = new Blob([data], { type: 'audio/mpeg' });
+    return URL.createObjectURL(blob);
+  };
+
+  const handleStop = async (blobUrl: string) => {
+    setIsLoading(true);
+
+    const userMsg = { sender: 'me', blobUrl };
+    const msgArr = [...messages, userMsg];
+
+    try {
+      const response = await fetch(blobUrl);
+      const blob = await response.blob();
+
+      const formData = new FormData();
+      formData.append('file', blob, 'myFile.wav');
+
+      const apiResponse = await axios.post('http://127.0.0.1:8000/post-audio/', formData, {
+        headers: { 'Content-type': 'audio/mpeg' },
+        responseType: 'arraybuffer',
+      });
+
+      const botBlob = apiResponse.data;
+      const botBlobUrl = createBlobUrl(botBlob);
+
+      const botMsg = { sender: 'ai', blobUrl: botBlobUrl };
+      msgArr.push(botMsg);
+      setMessages(msgArr);
+
+      const audio = new Audio(botBlobUrl);
+      audio.play();
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div>
-      <div className='h-screen overflow-y-hidden'>
-        <Title setMessages={setMessages}/>
-        <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
-            {/* <audio src={blob} controls /> */}
-            {/* Recorder */}
-            <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-sky-500 to-violet-500 '>
-              <div className='flex justify-center items-center w-full'>
-                <RecordMessage handleStop = {handleStop} />
+    <div className='h-screen overflow-y-hidden bg-gradient-to-r from-purple-500 to-indigo-500'>
+      <Title setMessages={setMessages} />
+      <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
+        <div className='mt-5 px-5'>
+          {messages.map((audio, index) => (
+            <div
+              key={index + audio.sender}
+              className={`flex ${audio.sender === 'ai' ? 'justify-end' : 'justify-start'} mb-4`}
+            >
+              <div
+                className={`p-2 rounded-lg ${
+                  audio.sender === 'ai' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'
+                }`}
+              >
+                <p className='mb-1'>{audio.sender === 'ai' ? 'AI' : 'Me'}</p>
+                <audio src={audio.blobUrl} controls />
               </div>
             </div>
+          ))}
+        </div>
+        <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-sky-500 to-violet-500'>
+          <div className='flex justify-center items-center w-full'>
+            <RecordMessage handleStop={handleStop} />
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -8,8 +8,8 @@ def get_recent_messages():
     file_name = "data.json"
     learn_instructions = {
         "role": "system",
-        "content": "You are interviewing the user for a job as sde intern. Ask short questions that are relevant to a fresher. Your name is Julie. Keep your answers under 15 words.",
-        
+        # "content": "You are interviewing the user for a job as sde intern. Ask short questions that are relevant to a fresher. Your name is Julie. Keep your answers under 15 words.",
+        "content":"You are my girlfriend. Flirt with me in romantic way. Your name is lakshmi. My name is chenna. Keep your answers under 15 words"
     }
     
     # Initialize messages
@@ -21,7 +21,8 @@ def get_recent_messages():
         learn_instructions["content"]=learn_instructions["content"] + "Your response should include light humour."
     
     else:
-        learn_instructions["content"] = learn_instructions["content"] + "Your response will include a challenging question."
+        #  learn_instructions["content"] = learn_instructions["content"] + "Your response will include a challenging question."
+         learn_instructions["content"] = learn_instructions["content"] 
     
     # Appending instructions to messages
     messages.append(learn_instructions)

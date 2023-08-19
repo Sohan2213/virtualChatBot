@@ -1,4 +1,4 @@
-import Controller from "./components/controller";
+import Controller from "./components/Controller";
 
 function App() {
   return (

@@ -17,12 +17,12 @@ from functions.text_to_speech import text_to_audio
 app = FastAPI()
 
 # CORS - origins
-origins = [
-    "http://localhost:5173/",
-    "http://localhost:3000/",
-    "http://localhost:5173/",
-]
+origins = ['*']
 
+# "http://localhost:5173/",
+#     "http://localhost:3000/",
+#     "http://localhost:5173",
+#     "http://127.0.0.1:5173/",
 # CORS - Middleware
 app.add_middleware(
     CORSMiddleware,
@@ -44,7 +44,7 @@ async def reset_convo():
 
 
 # get audio
-@app.post('/post-audio-get/')
+@app.post('/post-audio/')
 async def post_audio(file: UploadFile = File(...)):
     # get saved audio
     # audio_input = open("testMsg.mp3","rb") # rb - for read bytes
@@ -92,8 +92,6 @@ async def post_audio(file: UploadFile = File(...)):
     # audio_length = len(audio_out)
     return StreamingResponse(iterfile(), media_type="application/octet-stream")
 
-    
-    return "done"
     
     
 # posting bot response
