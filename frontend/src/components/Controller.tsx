@@ -6,7 +6,7 @@ import RecordMessage from './recordMessage';
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
-
+  isLoading;
   const createBlobUrl = (data: any) => {
     const blob = new Blob([data], { type: 'audio/mpeg' });
     return URL.createObjectURL(blob);
