@@ -52,6 +52,9 @@ export default function App() {
       <Title setMessages={setMessages} />
       <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
         <div className='mt-5 px-5'>
+          <div className='text-center'>Hi myself CAP your e-commerce assistant.</div>
+          <div className='text-center'> Let me help you in suggesting products</div>
+          <div className='text-center'>Introduce yourself to begin </div>
           {messages.map((audio, index) => (
             <div
               key={index + audio.sender}
@@ -62,7 +65,7 @@ export default function App() {
                   audio.sender === 'ai' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'
                 }`}
               >
-                <p className='mb-1'>{audio.sender === 'ai' ? 'AI' : 'Me'}</p>
+                <p className='mb-1'>{audio.sender === 'ai' ? 'CAP' : 'Me'}</p>
                 
                 <audio src={audio.blobUrl} controls />
               </div>
