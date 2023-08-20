@@ -25,7 +25,12 @@ export default function App() {
       const formData = new FormData();
       formData.append('file', blob, 'myFile.wav');
 
-      const apiResponse = await axios.post('http://127.0.0.1:8000/post-audio/', formData, {
+      // const apiResponse = await axios.post('http://127.0.0.1:8000/post-audio/', formData, {
+      //   headers: { 'Content-type': 'audio/mpeg' },
+      //   responseType: 'arraybuffer',
+      // });
+      // for deploy
+      const apiResponse = await axios.post('https://voicebot-n237.onrender.com/post-audio/', formData, {
         headers: { 'Content-type': 'audio/mpeg' },
         responseType: 'arraybuffer',
       });

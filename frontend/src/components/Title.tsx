@@ -12,7 +12,8 @@ function Title({ setMessages }: Props) {
     setIsResetting(true);
 
     try {
-      const response = await axios.get('http://127.0.0.1:8000/reset');
+      // const response = await axios.get('http://127.0.0.1:8000/reset');
+      const response = await axios.get('https://voicebot-n237.onrender.com/reset');
       if (response.status === 200) {
         setMessages([]);
       } else {
