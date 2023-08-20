@@ -78,4 +78,3 @@ Thank you for your interest in our project!
 
 ---
 
-*Disclaimer: This README is a fictional example created based on the provided information and does not represent an actual project or repository. The technologies and setup instructions are provided for illustrative purposes.*
