@@ -27,7 +27,7 @@ function Title({ setMessages }: Props) {
   };
 
   return (
-    <div className='flex justify-center items-center p-4 w-full bg-gradient-to-r from-blue-600 to-blue-900 text-white font-bold shadow-md'>
+    <div className='flex justify-center items-center p-4 w-full bg-gradient-to-r from-pink-600 to-pink-900 text-white font-bold shadow-md'>
       <div className='w-3/3 mx-4 text-center'>
         <div className='italic text-2xl'>Ishaan💖</div>
         <button
