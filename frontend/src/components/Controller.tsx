@@ -57,7 +57,7 @@ export default function App() {
       <Title setMessages={setMessages} />
       <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
         <div className='mt-5 px-5'>
-          <div className='text-center'>Hi myself Ishaan your BF💖.</div>
+          <div className='text-center'></div>
           <div className='text-center'></div>
           <div className='text-center'> </div>
           {messages.map((audio, index) => (
