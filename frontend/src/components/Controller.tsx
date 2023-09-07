@@ -77,7 +77,7 @@ export default function App() {
             </div>
           ))}
         </div>
-        <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-blue-600 to-blue-900'>
+        <div className='fixed bottom-0 w-full border-t text-center p-2 bg-gradient-to-r from-pink-600 to-pink-900'>
           <div className='flex justify-center items-center w-full'>
             <RecordMessage handleStop={handleStop} />
           </div>
