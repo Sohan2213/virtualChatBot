@@ -17,7 +17,7 @@ def text_to_audio(message):
     }
     
     # define voice
-    voice = "XrExE9yKIg1WjnnlVkGX"
+    voice = "GBv7mTt0atIp3Br8iCZE"
     
     # construting the endpoint adn headers
     headers = {"xi-api-key":ELEVEN_LABS_API_KEY,"Content-Type":"application/json","accept":"audio/mpeg"}
