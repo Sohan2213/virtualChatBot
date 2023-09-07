@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-    <div className='h-screen overflow-y-hidden bg-gradient-to-r from-blue-300 to-blue-100'>
+    <div className='h-screen overflow-y-hidden bg-gradient-to-r from-pink-300 to-pink-100'>
       <Title setMessages={setMessages} />
       <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
         <div className='mt-5 px-5'>
